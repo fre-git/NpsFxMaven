@@ -2,18 +2,18 @@ package com.fre.npsfxmaven;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedHashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileReaderAndWriter {
+    File file;
 
-    /*public void readFile(String file){
-        this.file = new File(file);
-    }     */
+    public File readFile(String file){
+        return new File(file);
+    }
 
-    public LinkedHashSet<Storable> processFile(String fileString){
-        File file = new File(fileString);
-        LinkedHashSet<Storable> npsRecords = new LinkedHashSet<>();
+    public Set<Storable> processFile(String fileString){
+        file = new File(fileString);
+        Set<Storable> npsRecords = new TreeSet<>();
         try{
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()){
@@ -34,6 +34,7 @@ public class FileReaderAndWriter {
         }
         return npsRecords;
     }
+
 
     public static String getName(String line){
         int nameStart = line.indexOf("name=\"") + "name=\"".length();

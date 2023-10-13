@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="AnchorPaneId" prefHeight="491.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fre.npsfxmaven.NpsController">
+<AnchorPane fx:id="AnchorPaneId" prefHeight="491.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fre.npsfxmaven.Controllers.NpsController">
    <children>
       <VBox fx:id="VBoxId" alignment="CENTER" prefHeight="593.0" prefWidth="751.0" spacing="20.0" stylesheets="@../../../css/style.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
           <padding>
@@ -23,7 +23,7 @@
              <Button mnemonicParsing="false" text="Button" />
            </buttons>
          </ButtonBar>
-          <Button fx:id="Button1" onAction="#onHelloButtonClick" text="Load connections" />
+          <Button fx:id="Button1" onAction="#loadFile" text="Load connections" />
          <TableView fx:id="tblData" prefHeight="600.0" prefWidth="200.0">
            <columns>
              <TableColumn fx:id="colOrder" prefWidth="50.0" text="Order" />

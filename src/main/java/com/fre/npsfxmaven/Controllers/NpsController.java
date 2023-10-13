@@ -1,14 +1,20 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.Controllers;
 
+import com.fre.npsfxmaven.FileReaderAndWriter;
+import com.fre.npsfxmaven.Nps;
+import com.fre.npsfxmaven.NpsStorage;
+import com.fre.npsfxmaven.Storable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -19,6 +25,7 @@ public class NpsController {
     FileReaderAndWriter readerAndWriter = new FileReaderAndWriter();
     NpsStorage npsStorage = new NpsStorage();
     File file;
+    //Storable nps;
 
     @FXML
     private AnchorPane AnchorPaneId;
@@ -63,16 +70,29 @@ public class NpsController {
 
     @FXML
     void onAddNpsClick() {
-        Stage stage = new Stage();
-        stage.show();
-        System.out.println("start adding");
-        String line = "add np name=\"Tel_CMP1_VLAN_100____EOVOIP\" state=\"enable\" processingorder=\"20\" policysource=\"0\" conditionid=\"0x1023\" conditiondata=\"S-1-5-21-21230147-39487222091-3732445045-1631\" profileid=\"0x100f\" profiledata=\"TRUE\"";
-        String name = "Tel_CMP1_VLAN_100____EOVOIP";
-        int order = 1;
-        Nps nps = new Nps(line, name, order);
-        npsStorage.addNps(nps);
+        AddNewNpsFormsController npsForm = new AddNewNpsFormsController();
+        npsForm.stage.show();
 
-        //TreeSet<Storable> treeSet = new TreeSet<>(npsStorage.getNpsRecords());
+        /*
+        Stage stage = new Stage();
+        HBox hbox = new HBox(new Label("Fill in properties for the new NPS"));
+        Scene scene = new Scene(hbox);
+        stage.setScene(scene);
+        stage.setWidth(300);
+        stage.setHeight(600);
+
+        stage.show();
+
+         */
+
+
+
+        //npsStorage.addNps(nps));
+
+
+
+
+
 
         tblData.setItems(getNpsObservableList());
     }
@@ -81,4 +101,8 @@ public class NpsController {
         ObservableList<Storable> npsSet = FXCollections.observableArrayList(npsStorage.getNpsRecords());
         return npsSet;
     }
+
+
+
+
 }
