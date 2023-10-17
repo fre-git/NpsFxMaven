@@ -1,0 +1,29 @@
+[33mcommit 44b54c30ea1b1b15d36d7cac2ef15e516f0bdc9d[m[33m ([m[1;36mHEAD -> [m[1;32mnpsExperimental[m[33m, [m[1;31morigin/npsExperimental[m[33m)[m
+Author: Frederic Gielen <Frederic-Gielen@cursist.syntrapxl.be>
+Date:   Tue Oct 17 23:33:45 2023 +0200
+
+    added a switch function, fixed some bugs
+
+[33mcommit cc372fff4e61eb78639c546307d33adf2787c1b3[m
+Author: Frederic Gielen <Frederic-Gielen@cursist.syntrapxl.be>
+Date:   Fri Oct 13 22:31:01 2023 +0200
+
+    fixed bug, back to stable
+
+[33mcommit 108094e7db049d6fa32305f8f945b37d6a9c2746[m
+Author: Frederic Gielen <Frederic-Gielen@cursist.syntrapxl.be>
+Date:   Fri Oct 13 22:12:41 2023 +0200
+
+    Added style and forms to second stage
+
+[33mcommit b0f7cb4d0af0814cf1900eb74b9a0ae8f6ab449d[m
+Author: Frederic Gielen <Frederic-Gielen@cursist.syntrapxl.be>
+Date:   Fri Oct 13 18:25:13 2023 +0200
+
+    Changed linkedHashSet to treeSet, fixed addNewNps
+
+[33mcommit aa06c36c048d4175a7e048f48f20d9073103d5e5[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Frederic Gielen <Frederic-Gielen@cursist.syntrapxl.be>
+Date:   Fri Oct 13 14:49:37 2023 +0200
+
+    first Commit, nps project with LinkedhashSet

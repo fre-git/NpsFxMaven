@@ -35,7 +35,6 @@ public class FileReaderAndWriter {
         return npsRecords;
     }
 
-
     public static String getName(String line){
         int nameStart = line.indexOf("name=\"") + "name=\"".length();
         int nameEnd = line.indexOf("\" state");

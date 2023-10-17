@@ -1,9 +1,10 @@
 package com.fre.npsfxmaven;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.TreeSet;
 
-public class NpsStorage {
+public class NpsStorage implements IStorage{
     Collection<Storable> npsStorage = new TreeSet<>((nps1, nps2) -> {
         if (nps1.getProcessingOrder() == nps2.getProcessingOrder()) {
             return nps1.getName().compareTo(nps2.getName());
@@ -22,6 +23,68 @@ public class NpsStorage {
         }
         npsStorage.add(newNps);
     }
+
+    public void bumpNps(Storable npsToBump){
+        for (Storable nps : npsStorage) {
+            if (nps.getProcessingOrder() >= npsToBump.getProcessingOrder()) {
+                nps.bumpProcessingOrder();
+            }
+        }
+        npsStorage.add(npsToBump);
+    }
+
+
+
+    public void removeNps(Storable nps){
+        npsStorage.remove(nps);
+    }
+
+    public void getNps(String orderOne, String orderTwo){
+        List<Storable> listNpsStorage = npsStorage.stream().toList();
+
+        int index1 = Integer.parseInt(orderOne) - 1;
+        int index2 = Integer.parseInt(orderTwo) -1;
+
+        int temp = listNpsStorage.get(index1).getProcessingOrder();
+        listNpsStorage.get(index1).setProcessingOrder(listNpsStorage.get(index2).getProcessingOrder());
+        listNpsStorage.get(index2).setProcessingOrder(temp);
+        for (Storable s: listNpsStorage) {
+            System.out.println(s);
+        }
+
+        TreeSet<Storable> treeSetNps = new TreeSet<>(listNpsStorage);
+        for (Storable s: treeSetNps) {
+            System.out.println(s);
+        }
+        setStorage(treeSetNps);
+
+        //return treeSetNps;
+
+
+
+        /*
+        Storable nps2 = listNpsStorage.get(Integer.parseInt(orderTwo));
+
+        //int temp = nps1.getProcessingOrder();
+        nps1.setProcessingOrder(nps2.getProcessingOrder());
+        nps2.setProcessingOrder(temp);
+
+
+
+        for (Storable s: listNpsStorage) {
+            System.out.println(s);
+        }
+
+
+         */
+
+
+
+
+        //npsArray =   npsStorage.toArray();
+    }
+
+
 
     public void setStorage(Collection storage){
         this.npsStorage = storage;

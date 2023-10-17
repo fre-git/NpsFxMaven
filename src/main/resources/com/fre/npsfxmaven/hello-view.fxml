@@ -20,7 +20,7 @@
          <ButtonBar prefHeight="40.0" prefWidth="200.0">
            <buttons>
                <Button fx:id="buttonAddNps" mnemonicParsing="false" onAction="#onAddNpsClick" text="Add NPS" />
-             <Button mnemonicParsing="false" text="Button" />
+             <Button mnemonicParsing="false" onAction="#onSwitchNps" text="Switch nps" />
            </buttons>
          </ButtonBar>
           <Button fx:id="Button1" onAction="#loadFile" text="Load connections" />

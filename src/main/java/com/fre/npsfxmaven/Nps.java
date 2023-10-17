@@ -33,6 +33,8 @@ public class Nps implements Storable , Comparable<Nps> {
         ++this.processingOrder;
     }
 
+
+
     @Override
     public int compareTo(Nps nps) {
         if (this.processingOrder == nps.processingOrder) {
@@ -54,8 +56,35 @@ public class Nps implements Storable , Comparable<Nps> {
     }
 
     @Override
+    public void setProcessingOrder(int i){
+        this.processingOrder = i;
+    }
+
+    @Override
     public String toString(){
         return this.processingOrder + ": " +  this.name;
     }
+
+/*
+    @Override
+    public void validate() {
+        System.out.println("start validating");
+        validateNpsName();
+        validateProcessingOrder();
+    }
+
+    private void validateProcessingOrder() {
+        if(processingOrder < 0){
+            throw new RuntimeException("ProcessingOrder can't be negative");
+        }
+    }
+
+    private void validateNpsName() {
+        if(name == null){
+            throw new RuntimeException("Name can't be empty");
+        }
+    }
+
+ */
 
 }
