@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,22 +63,17 @@ public class NpsController {
 
     @FXML
     void loadFile() {
-        /*
+        /*TODO TERUG ZETTEN
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         Stage stage = new Stage();
         String pathname = fileChooser.showOpenDialog(stage).getPath();
         System.out.println(pathname);
         file = readerAndWriter.readFile(pathname);
-
          */
-
-
-
 //Fix this for filechooser
         npsStorage.setStorage(readerAndWriter.processFile("src/main/resources/com/fre/npsfxmaven/nps.txt"));
         //npsStorage.setStorage(readerAndWriter.processFile(pathname));
-
 
         colLine.setCellValueFactory(new PropertyValueFactory<Storable, String>("fullLine"));
         colName.setCellValueFactory(new PropertyValueFactory<Storable, String>("name"));
@@ -89,21 +86,16 @@ public class NpsController {
     void onSwitchNps(){
 
         Stage stageSwitchNps = new Stage();
-        stageSwitchNps.setTitle("Give the processing order of the network policy servers you want to switch");
+        stageSwitchNps.setTitle("Enter two processing-orders to switch NPS priority");
 
-        GridPane grid = new GridPane();
-        grid.setId("gridId");
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        GridPane grid = initiateGrid();
 
         Scene scene = new Scene(grid);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
 
         stageSwitchNps.setScene(scene);
-        stageSwitchNps.setWidth(300);
-        stageSwitchNps.setHeight(300);
+        stageSwitchNps.setWidth(450);
+        stageSwitchNps.setHeight(250);
         Label firstNps = new Label("First Nps");
         grid.add(firstNps, 0, 1);
         TextField firstNpsTextField = new TextField();
@@ -187,16 +179,9 @@ public class NpsController {
         Stage stage1 = new Stage();
         stage1.setTitle("Fill in NP properties");
 
-        GridPane grid = new GridPane();
-        grid.setId("gridId");
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-
+        GridPane grid = initiateGrid();
         Scene scene = new Scene(grid);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
-
         stage1.setScene(scene);
         stage1.setWidth(400);
         stage1.setHeight(500);
@@ -248,7 +233,6 @@ public class NpsController {
         stage1.show();
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent e) {
                 String processingOrder = processingOrderTextField.getText();
@@ -261,48 +245,22 @@ public class NpsController {
                         profileIdTextField.getText(),
                         profileDataTextField.getText());
 
-                // System.out.println(nps);
                 npsStorage.addNps(nps);
                 System.out.println(npsStorage);
-
-                // FXMLLoader loader = new FXMLLoader(getClass().getResource())
                 tblData.setItems(getNpsObservableList());
                 stage1.close();
             }
         });
+    }
 
-
-
-
-
-        /*
-        AddNewNpsFormsController npsForm = new AddNewNpsFormsController();
-        npsForm.stage.show();
-
-        /*
-
-
-        System.out.println("nps: + + "  + nps);
-        AddNewNpsFormsController npsForm = new AddNewNpsFormsController();
-        npsForm.stage.show();
-
-        Stage stage = new Stage();
-        HBox hbox = new HBox(new Label("Fill in properties for the new NPS"));
-        Scene scene = new Scene(hbox);
-        stage.setScene(scene);
-        stage.setWidth(300);
-        stage.setHeight(600);
-
-        stage.show();
-
-
-
-
-
-        //npsStorage.addNps(nps));
-
-        tblData.setItems(getNpsObservableList());
-        */
+    private GridPane initiateGrid() {
+        GridPane grid = new GridPane();
+        grid.setId("gridId");
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+        return grid;
     }
 
     public ObservableList<Storable> getNpsObservableList(){

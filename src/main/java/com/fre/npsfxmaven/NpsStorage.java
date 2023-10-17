@@ -33,12 +33,6 @@ public class NpsStorage implements IStorage{
         npsStorage.add(npsToBump);
     }
 
-
-
-    public void removeNps(Storable nps){
-        npsStorage.remove(nps);
-    }
-
     public void getNps(String orderOne, String orderTwo){
         List<Storable> listNpsStorage = npsStorage.stream().toList();
 
@@ -57,34 +51,7 @@ public class NpsStorage implements IStorage{
             System.out.println(s);
         }
         setStorage(treeSetNps);
-
-        //return treeSetNps;
-
-
-
-        /*
-        Storable nps2 = listNpsStorage.get(Integer.parseInt(orderTwo));
-
-        //int temp = nps1.getProcessingOrder();
-        nps1.setProcessingOrder(nps2.getProcessingOrder());
-        nps2.setProcessingOrder(temp);
-
-
-
-        for (Storable s: listNpsStorage) {
-            System.out.println(s);
-        }
-
-
-         */
-
-
-
-
-        //npsArray =   npsStorage.toArray();
     }
-
-
 
     public void setStorage(Collection storage){
         this.npsStorage = storage;
