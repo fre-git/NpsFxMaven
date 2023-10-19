@@ -14,5 +14,4 @@ public class GridBuilder {
         grid.setPadding(new Insets(25, 25, 25, 25));
         return grid;
     }
-
 }

@@ -22,8 +22,7 @@
                      <Label fx:id="infoLabel" prefHeight="16.0" prefWidth="883.0" textFill="#eee3e3" />
                   </children>
                </HBox>
-            </buttons>
-         </ButtonBar>
+            </buttons></ButtonBar>
          <ButtonBar prefHeight="54.0" prefWidth="701.0">
            <buttons>
                <Button fx:id="buttonAddNps" mnemonicParsing="false" onAction="#onAddNpsClick" text="Add NPS" />
