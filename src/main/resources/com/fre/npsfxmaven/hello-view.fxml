@@ -9,24 +9,27 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="AnchorPaneId" prefHeight="491.0" prefWidth="4448.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fre.npsfxmaven.Controllers.NpsController">
+<AnchorPane fx:id="AnchorPaneId" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fre.npsfxmaven.controller.NpsController">
    <children>
-      <VBox fx:id="VBoxId" alignment="CENTER" layoutX="-5.0" layoutY="-4.0" prefHeight="491.0" prefWidth="4579.0" stylesheets="@../../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="VBoxId" alignment="CENTER" layoutX="-5.0" layoutY="-4.0" prefHeight="491.0" prefWidth="800.0" stylesheets="@../../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <ButtonBar prefHeight="40.0" prefWidth="200.0">
             <buttons>
-            
-                                                    <Label fx:id="welcomeText" />
+               <HBox prefHeight="40.0" prefWidth="1573.0">
+                  <children>
+                     <Label fx:id="infoLabel" prefHeight="16.0" prefWidth="883.0" textFill="#eee3e3" />
+                  </children>
+               </HBox>
             </buttons></ButtonBar>
          <ButtonBar prefHeight="54.0" prefWidth="701.0">
            <buttons>
                <Button fx:id="buttonAddNps" mnemonicParsing="false" onAction="#onAddNpsClick" text="Add NPS" />
              <Button mnemonicParsing="false" onAction="#onSwitchNps" text="Switch nps" />
-               <Label fx:id="infoLabel" textFill="#eee3e3" />
            </buttons>
          </ButtonBar>
-         <TableView fx:id="tblData" prefHeight="600.0" prefWidth="200.0">
+         <TableView fx:id="tblData" prefHeight="550.0" prefWidth="1560.0">
            <columns>
              <TableColumn fx:id="colOrder" prefWidth="50.0" text="Order" />
              <TableColumn fx:id="colName" prefWidth="250.0" text="Name" />
@@ -39,7 +42,7 @@
            </columns>
          </TableView>
       </VBox>
-      <MenuBar fx:id="menuBarId" prefHeight="22.0" prefWidth="5000.0">
+      <MenuBar fx:id="menuBarId" prefHeight="22.0" prefWidth="1600.0">
         <menus>
           <Menu fx:id="fileId" mnemonicParsing="false" text="File">
             <items>

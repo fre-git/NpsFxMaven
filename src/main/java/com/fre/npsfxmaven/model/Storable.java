@@ -1,4 +1,4 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
 public interface Storable {
     String getName();
@@ -6,5 +6,7 @@ public interface Storable {
     void bumpProcessingOrder();
     void setProcessingOrder(int i);
     String getFullLine();
+
+    void validate();
 
 }

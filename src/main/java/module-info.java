@@ -9,6 +9,10 @@ module com.fre.npsfxmaven {
 
     opens com.fre.npsfxmaven to javafx.fxml;
     exports com.fre.npsfxmaven;
-    exports com.fre.npsfxmaven.Controllers;
-    opens com.fre.npsfxmaven.Controllers to javafx.fxml;
+    exports com.fre.npsfxmaven.controller;
+    opens com.fre.npsfxmaven.controller to javafx.fxml;
+    exports com.fre.npsfxmaven.model;
+    opens com.fre.npsfxmaven.model to javafx.fxml;
+    exports com.fre.npsfxmaven.util;
+    opens com.fre.npsfxmaven.util to javafx.fxml;
 }

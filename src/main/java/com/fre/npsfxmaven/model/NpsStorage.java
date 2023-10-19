@@ -1,10 +1,14 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
 
 public class NpsStorage implements IStorage{
+    String nameAlreadyExist = "Network with this name already exists.";
+    String nameIsEmpty = "Network name can't be empty";
+    String npsAdded = "Added Nps";
+
     Collection<Storable> npsStorage = new TreeSet<>((nps1, nps2) -> {
         if (nps1.getProcessingOrder() == nps2.getProcessingOrder()) {
             return nps1.getName().compareTo(nps2.getName());
@@ -12,19 +16,28 @@ public class NpsStorage implements IStorage{
         return Integer.compare(nps1.getProcessingOrder(), nps2.getProcessingOrder());
     });
 
-    public void addNps(Storable newNps) {
+    public String addNps(Storable newNps) {
+    newNps.validate();
         for (Storable nps : npsStorage) {
             if (nps.getName().equals(newNps.getName())) {
-                System.out.println("Network with name " + newNps.getName() + " already exists.");
-                return;
-            } else if (nps.getProcessingOrder() >= newNps.getProcessingOrder()) {
+                //System.out.println("Network with name " + newNps.getName() + " already exists.");
+                return nameAlreadyExist;
+            } else if(newNps.getName().equals(null) || newNps.getName().equals("")) {
+                //System.out.println("network name can't be empty");
+                return nameIsEmpty;
+            }
+            else if (nps.getProcessingOrder() >= newNps.getProcessingOrder()) {
+                System.out.println("nps name: " + newNps.getName());
+                System.out.println(">=");
                 nps.bumpProcessingOrder();
             }
         }
+        System.out.println("add?");
         npsStorage.add(newNps);
+        return npsAdded;
     }
 
-    public void getNps(String orderOne, String orderTwo){
+    public void switchNps(String orderOne, String orderTwo){
         List<Storable> listNpsStorage = npsStorage.stream().toList();
 
         int index1 = Integer.parseInt(orderOne) - 1;

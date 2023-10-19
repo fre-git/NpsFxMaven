@@ -1,18 +1,5 @@
 package com.fre.npsfxmaven.view;
 
-import com.fre.npsfxmaven.FileReaderAndWriter;
-import com.fre.npsfxmaven.NpsStorage;
-import com.fre.npsfxmaven.Storable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
-import java.io.File;
-
 public class AppView {
     /*
     FileReaderAndWriter readerAndWriter;

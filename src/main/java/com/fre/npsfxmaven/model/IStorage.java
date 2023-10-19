@@ -1,9 +1,9 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
 import java.util.Collection;
 
 public interface IStorage {
-    void addNps(Storable nps);
+    String addNps(Storable nps);
 
     void setStorage(Collection storage);
 

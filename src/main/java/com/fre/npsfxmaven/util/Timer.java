@@ -1,4 +1,4 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.util;
 
 import javafx.concurrent.Task;
 

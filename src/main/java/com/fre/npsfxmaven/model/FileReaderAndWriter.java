@@ -1,4 +1,4 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -49,17 +49,20 @@ public class FileReaderAndWriter implements IReaderAndWriter{
     }
 
     @Override
-    public String saveFile(Collection<Storable> treeSet) throws IOException {
-        FileWriter csvFileWriter = new FileWriter("src/main/resources/com/fre/npsfxmaven/nps.txt", true);
+    public String saveFile(Collection<Storable> treeSet, String pathName) throws IOException {
+        //FileWriter csvFileWriter = new FileWriter("src/main/resources/com/fre/npsfxmaven/nps.txt", true);
+        FileWriter csvFileWriter = new FileWriter(pathName, true);
+
         csvFileWriter.write("");
         BufferedWriter bufferedWriter = new BufferedWriter(csvFileWriter);
 
-        PrintWriter writer = new PrintWriter("src/main/resources/com/fre/npsfxmaven/nps.txt");
+        //PrintWriter writer = new PrintWriter("src/main/resources/com/fre/npsfxmaven/nps.txt");
+        PrintWriter writer = new PrintWriter(pathName);
+
         writer.print("");
         writer.close();
 
         for (Storable nps: treeSet) {
-            System.out.println(nps.getFullLine());
             bufferedWriter.write(nps.getFullLine());
             bufferedWriter.write("\n");
             bufferedWriter.newLine();
@@ -76,18 +79,16 @@ public class FileReaderAndWriter implements IReaderAndWriter{
         String pathname = fileChooser.showOpenDialog(stage).getPath();
         //
 
-
+        //Empty file before saving
         FileWriter csvFileWriter = new FileWriter(pathname, true);
-        csvFileWriter.write("");
+        //csvFileWriter.write("");
         BufferedWriter bufferedWriter = new BufferedWriter(csvFileWriter);
 
-        PrintWriter writer = new PrintWriter("src/main/resources/com/fre/npsfxmaven/nps2.txt");
+        PrintWriter writer = new PrintWriter(pathname);
         writer.print("");
         writer.close();
 
-
         for (Storable nps: treeSet) {
-            System.out.println(nps.getFullLine());
             bufferedWriter.write(nps.getFullLine());
             bufferedWriter.write("\n");
             bufferedWriter.newLine();

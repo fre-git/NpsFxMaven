@@ -1,4 +1,4 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
 public class Nps implements Storable , Comparable<Nps> {
     private String fullLine;
@@ -10,6 +10,11 @@ public class Nps implements Storable , Comparable<Nps> {
     private String conditionData;
     private String profileId;
     private String profileData;
+
+    public Nps(String name, int processingOrder) {
+        this.name = name;
+        this.processingOrder = processingOrder;
+    }
 
     public Nps(String name, Integer processingOrder, String state, int policySource, String conditionId,
                String conditionData, String profileId, String profileData) {
@@ -100,26 +105,24 @@ public class Nps implements Storable , Comparable<Nps> {
         return this.processingOrder + ": " +  this.name;
     }
 
-/*
     @Override
     public void validate() {
-        System.out.println("start validating");
         validateNpsName();
         validateProcessingOrder();
     }
 
-    private void validateProcessingOrder() {
-        if(processingOrder < 0){
-            throw new RuntimeException("ProcessingOrder can't be negative");
+    public void validateProcessingOrder() {
+        if(processingOrder <= 0){
+            throw new RuntimeException("ProcessingOrder must be positive number");
         }
     }
 
-    private void validateNpsName() {
-        if(name == null){
+    public void validateNpsName() {
+        if(name == null || name == ""){
             throw new RuntimeException("Name can't be empty");
         }
     }
 
- */
+
 
 }
