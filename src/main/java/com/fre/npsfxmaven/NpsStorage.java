@@ -24,15 +24,6 @@ public class NpsStorage implements IStorage{
         npsStorage.add(newNps);
     }
 
-    public void bumpNps(Storable npsToBump){
-        for (Storable nps : npsStorage) {
-            if (nps.getProcessingOrder() >= npsToBump.getProcessingOrder()) {
-                nps.bumpProcessingOrder();
-            }
-        }
-        npsStorage.add(npsToBump);
-    }
-
     public void getNps(String orderOne, String orderTwo){
         List<Storable> listNpsStorage = npsStorage.stream().toList();
 
@@ -42,14 +33,8 @@ public class NpsStorage implements IStorage{
         int temp = listNpsStorage.get(index1).getProcessingOrder();
         listNpsStorage.get(index1).setProcessingOrder(listNpsStorage.get(index2).getProcessingOrder());
         listNpsStorage.get(index2).setProcessingOrder(temp);
-        for (Storable s: listNpsStorage) {
-            System.out.println(s);
-        }
 
         TreeSet<Storable> treeSetNps = new TreeSet<>(listNpsStorage);
-        for (Storable s: treeSetNps) {
-            System.out.println(s);
-        }
         setStorage(treeSetNps);
     }
 
@@ -63,10 +48,10 @@ public class NpsStorage implements IStorage{
 
     @Override
     public String toString(){
-        String storage = "";
+        StringBuilder storage = new StringBuilder();
         for (Storable nps: npsStorage) {
-            storage += nps + "\n";
+            storage.append(nps).append("\n");
         }
-        return storage;
+        return storage.toString();
     }
 }

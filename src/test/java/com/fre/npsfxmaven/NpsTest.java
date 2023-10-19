@@ -7,7 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class NpsTest {
 
     @Test
-    void getFile() {
+    void bumpProcessingOrder() {
+    }
+
+    @Test
+    void compareTo() {
+    }
+
+    @Test
+    void getFullLine() {
     }
 
     @Test
@@ -16,5 +24,33 @@ class NpsTest {
 
     @Test
     void getProcessingOrder() {
+    }
+
+    @Test
+    void getState() {
+    }
+
+    @Test
+    void getPolicySource() {
+    }
+
+    @Test
+    void getConditionId() {
+    }
+
+    @Test
+    void getConditionData() {
+    }
+
+    @Test
+    void getProfileId() {
+    }
+
+    @Test
+    void getProfileData() {
+    }
+
+    @Test
+    void setProcessingOrder() {
     }
 }

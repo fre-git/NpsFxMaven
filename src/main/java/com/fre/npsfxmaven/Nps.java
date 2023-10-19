@@ -11,14 +11,21 @@ public class Nps implements Storable , Comparable<Nps> {
     private String profileId;
     private String profileData;
 
-    public Nps(String fullLine, String name, int processingOrder) {
-        this.fullLine = fullLine;
-        this.name = name;
-        this.processingOrder = processingOrder;
-    }
-
     public Nps(String name, Integer processingOrder, String state, int policySource, String conditionId,
                String conditionData, String profileId, String profileData) {
+        this.name = name;
+        this.processingOrder = processingOrder;
+        this.state = state;
+        this.policySource = policySource;
+        this.conditionId = conditionId;
+        this.conditionData = conditionData;
+        this.profileId = profileId;
+        this.profileData = profileData;
+    }
+
+    public Nps(String fullLine, String name, Integer processingOrder, String state, int policySource, String conditionId,
+               String conditionData, String profileId, String profileData) {
+        this.fullLine = fullLine;
         this.name = name;
         this.processingOrder = processingOrder;
         this.state = state;
@@ -44,7 +51,11 @@ public class Nps implements Storable , Comparable<Nps> {
     }
 
     public String getFullLine() {
-        return fullLine;
+
+        return "add np name=\"" + getName() + "\" state=\"" + getState() + "\" processingorder=\""
+                + getProcessingOrder() + "\" policysource=\"" + getPolicySource() + "\" conditionid=\""
+                + getConditionId() + "\" conditiondata=\"" + getConditionData() + "\" profileid=\""
+                + getProfileId() + "\" profiledata=\"" + getProfileData() + "\"";
     }
 
     public String getName() {
@@ -53,6 +64,30 @@ public class Nps implements Storable , Comparable<Nps> {
 
     public int getProcessingOrder() {
         return processingOrder;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getPolicySource() {
+        return policySource;
+    }
+
+    public String getConditionId() {
+        return conditionId;
+    }
+
+    public String getConditionData() {
+        return conditionData;
+    }
+
+    public String getProfileId() {
+        return profileId;
+    }
+
+    public String getProfileData() {
+        return profileData;
     }
 
     @Override

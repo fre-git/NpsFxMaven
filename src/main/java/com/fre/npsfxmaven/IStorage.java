@@ -7,7 +7,7 @@ public interface IStorage {
 
     void setStorage(Collection storage);
 
-    public Collection<Storable> getNpsRecords();
+    Collection<Storable> getNpsRecords();
 
 
 }

@@ -22,17 +22,6 @@ public class NpsApplication extends Application {
     }
 
     public static void main(String[] args) {
-        /*
-        NpsController controller = new NpsController();
-        FileReaderAndWriter readerAndWriter = new FileReaderAndWriter();
-        Collection<Storable> npsStorage;
-
-         */
-
         launch();
-        //readerAndWriter.readFile("src/main/resources/com/fre/npsfxmaven/nps.txt");
-
-        //npsStorage = readerAndWriter.processFile("src/main/resources/com/fre/npsfxmaven/nps.txt");
-
     }
 }
