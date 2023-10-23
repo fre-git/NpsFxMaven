@@ -1,7 +1,6 @@
 package com.fre.npsfxmaven.model;
 
 public class Nps implements Storable , Comparable<Nps> {
-    private String fullLine;
     private String name;
     private int processingOrder;
     private String state;
@@ -28,24 +27,9 @@ public class Nps implements Storable , Comparable<Nps> {
         this.profileData = profileData;
     }
 
-    public Nps(String fullLine, String name, Integer processingOrder, String state, int policySource, String conditionId,
-               String conditionData, String profileId, String profileData) {
-        this.fullLine = fullLine;
-        this.name = name;
-        this.processingOrder = processingOrder;
-        this.state = state;
-        this.policySource = policySource;
-        this.conditionId = conditionId;
-        this.conditionData = conditionData;
-        this.profileId = profileId;
-        this.profileData = profileData;
-    }
-
     public void bumpProcessingOrder(){
         ++this.processingOrder;
     }
-
-
 
     @Override
     public int compareTo(Nps nps) {
@@ -56,7 +40,6 @@ public class Nps implements Storable , Comparable<Nps> {
     }
 
     public String getFullLine() {
-
         return "add np name=\"" + getName() + "\" state=\"" + getState() + "\" processingorder=\""
                 + getProcessingOrder() + "\" policysource=\"" + getPolicySource() + "\" conditionid=\""
                 + getConditionId() + "\" conditiondata=\"" + getConditionData() + "\" profileid=\""
@@ -101,11 +84,6 @@ public class Nps implements Storable , Comparable<Nps> {
     }
 
     @Override
-    public String toString(){
-        return this.processingOrder + ": " +  this.name;
-    }
-
-    @Override
     public void validate() {
         validateNpsName();
         validateProcessingOrder();
@@ -123,6 +101,8 @@ public class Nps implements Storable , Comparable<Nps> {
         }
     }
 
-
-
+    @Override
+    public String toString(){
+        return this.processingOrder + ": " +  this.name;
+    }
 }

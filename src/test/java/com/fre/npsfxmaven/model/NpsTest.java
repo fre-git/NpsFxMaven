@@ -1,4 +1,4 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
 import com.fre.npsfxmaven.model.Nps;
 import org.junit.jupiter.api.Assertions;

@@ -16,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -74,11 +73,9 @@ public class NpsController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         Stage stage = new Stage();
-        pathname = fileChooser.showOpenDialog(stage).getPath();
-        System.out.println(pathname);
-        file = readerAndWriter.readFile(pathname);
 
-// todo delete : npsStorage.setStorage(readerAndWriter.processFile("src/main/resources/com/fre/npsfxmaven/nps.txt"));
+        pathname = fileChooser.showOpenDialog(stage).getPath();
+        file = readerAndWriter.readFile(pathname);
         npsStorage.setStorage(readerAndWriter.processFile(pathname));
         loadTableview();
     }
@@ -98,9 +95,10 @@ public class NpsController {
 
     @FXML
     void onSwitchNps() {
+        // switch two nps priorities
         SwitchNpsView switchView = new SwitchNpsView();
         switchView.getBtn().setOnAction(e -> {
-            npsStorage.switchNps(switchView.getFirstNpsTextField().getText(),
+            npsStorage.switchNpsPriority(switchView.getFirstNpsTextField().getText(),
                     switchView.getSecondNpsTextField().getText());
             tblData.setItems(getNpsObservableList());
             switchView.getStageSwitchNps().close();
@@ -114,17 +112,15 @@ public class NpsController {
             String processingOrder = formView.getProcessingOrderTextField().getText();
             nps = new Nps(
                     formView.getNameTextField().getText(), Integer.valueOf(processingOrder),
-                    formView.getStateTextField().getText(), Integer.parseInt(formView.getPolicyTextField().getText()),
+                    formView.getStateComboBox().getValue(), Integer.parseInt(formView.getPolicyTextField().getText()),
                     formView.getConditionTextField().getText(), formView.getConditionDataTextField().getText(),
-                    formView.getProfileIdTextField().getText(), formView.getProfileDataTextField().getText()
+                    formView.getProfileIdTextField().getText(), formView.getProfileDataComboBox().getValue()
             );
-
             nps.validate();
 
             infoLabel.setText(npsStorage.addNps(nps));
             Timer.delay(5000, () -> infoLabel.setText(""));
 
-            //npsStorage.addNps(nps);
             tblData.setItems(getNpsObservableList());
             formView.getStage().close();
         });

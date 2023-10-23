@@ -36,9 +36,9 @@
                <TableColumn fx:id="colState" prefWidth="60.0" text="State" />
                <TableColumn fx:id="colPolicy" prefWidth="109.0" text="Policy source" />
                <TableColumn fx:id="colConditionId" prefWidth="81.0" text="Condition id" />
-               <TableColumn fx:id="colConditionData" prefWidth="330.0" text="Condition data" />
-               <TableColumn fx:id="colProfileId" prefWidth="90.0" text="Profile id" />
-               <TableColumn fx:id="colProfileData" prefWidth="90.0" text="Profile data" />
+               <TableColumn fx:id="colConditionData" prefWidth="369.0" text="Condition data" />
+               <TableColumn fx:id="colProfileId" prefWidth="73.0" text="Profile id" />
+               <TableColumn fx:id="colProfileData" prefWidth="103.0" text="Profile data" />
            </columns>
          </TableView>
       </VBox>

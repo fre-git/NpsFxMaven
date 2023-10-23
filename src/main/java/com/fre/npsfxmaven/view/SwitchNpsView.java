@@ -18,7 +18,6 @@ public class SwitchNpsView {
     TextField firstNpsTextField;
     TextField secondNpsTextField;
 
-
     public SwitchNpsView() {
         stageSwitchNps = new Stage();
         stageSwitchNps.setTitle("Switch NPS priority");
@@ -26,20 +25,20 @@ public class SwitchNpsView {
         scene = new Scene(grid);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
         stageSwitchNps.setScene(scene);
-        stageSwitchNps.setWidth(400);
+        stageSwitchNps.setWidth(420);
         stageSwitchNps.setHeight(250);
 
-        Label firstNps = new Label("processing order 1st Nps");
+        Label firstNps = new Label("processingorder 1st Nps");
         grid.add(firstNps, 0, 1);
         firstNpsTextField = new TextField();
         grid.add(firstNpsTextField, 1, 1);
 
-        Label secondNps = new Label("processing order 2nd Nps");
+        Label secondNps = new Label("processingorder 2nd Nps");
         grid.add(secondNps, 0, 2);
         secondNpsTextField = new TextField();
         grid.add(secondNpsTextField, 1, 2);
 
-        btn = new Button("Switch processing order");
+        btn = new Button("Switch priority");
         grid.add(btn, 1, 10);
         stageSwitchNps.show();
     }

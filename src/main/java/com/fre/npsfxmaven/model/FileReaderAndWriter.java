@@ -1,5 +1,6 @@
 package com.fre.npsfxmaven.model;
 
+import com.fre.npsfxmaven.util.StringProcessor;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -24,20 +25,19 @@ public class FileReaderAndWriter implements IReaderAndWriter{
                 String line = reader.nextLine();
                 //remove empty lines
                 if(!line.equals("")){
-                    String name = getName(line);
-                    int processingNumber = getProcessingNumber(line);
-                    String state = getState(line);
-                    int policySource = getPolicy(line);
 
-                    String conditionId = getConditionId(line);
-                    String conditionData = getConditionData(line);
-                    String profileId = getProfileId(line);
-                    String profileData = getProfileData(line);
+                    String name = StringProcessor.getName(line);
+                    int processingNumber = StringProcessor.getProcessingNumber(line);
+                    String state = StringProcessor.getState(line);
+                    int policySource = StringProcessor.getPolicy(line);
+                    String conditionId = StringProcessor.getConditionId(line);
+                    String conditionData = StringProcessor.getConditionData(line);
+                    String profileId = StringProcessor.getProfileId(line);
+                    String profileData = StringProcessor.getProfileData(line);
 
-                    //save Nps and add to linkedHashSet
-                    Storable nps = new Nps(line, name, processingNumber, state, policySource, conditionId, conditionData,
+                    //save Nps and add to treeSet
+                    Storable nps = new Nps(name, processingNumber, state, policySource, conditionId, conditionData,
                             profileId, profileData);
-                    //Storable nps = new Nps(line, name, processingNumber);
                     npsRecords.add(nps);
                 }
             }
@@ -50,15 +50,11 @@ public class FileReaderAndWriter implements IReaderAndWriter{
 
     @Override
     public String saveFile(Collection<Storable> treeSet, String pathName) throws IOException {
-        //FileWriter csvFileWriter = new FileWriter("src/main/resources/com/fre/npsfxmaven/nps.txt", true);
         FileWriter csvFileWriter = new FileWriter(pathName, true);
-
-        csvFileWriter.write("");
         BufferedWriter bufferedWriter = new BufferedWriter(csvFileWriter);
 
-        //PrintWriter writer = new PrintWriter("src/main/resources/com/fre/npsfxmaven/nps.txt");
+        //empty file before saving
         PrintWriter writer = new PrintWriter(pathName);
-
         writer.print("");
         writer.close();
 
@@ -72,18 +68,15 @@ public class FileReaderAndWriter implements IReaderAndWriter{
     }
 
     public String saveFileAs(Collection<Storable> treeSet) throws IOException {
-        //
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file as");
         Stage stage = new Stage();
         String pathname = fileChooser.showOpenDialog(stage).getPath();
-        //
 
-        //Empty file before saving
         FileWriter csvFileWriter = new FileWriter(pathname, true);
-        //csvFileWriter.write("");
         BufferedWriter bufferedWriter = new BufferedWriter(csvFileWriter);
 
+        //Empty file before saving
         PrintWriter writer = new PrintWriter(pathname);
         writer.print("");
         writer.close();
@@ -96,55 +89,4 @@ public class FileReaderAndWriter implements IReaderAndWriter{
         bufferedWriter.flush();
         return "Save completed";
     }
-
-
-
-    public static String getName(String line){
-        int nameStart = line.indexOf("name=\"") + "name=\"".length();
-        int nameEnd = line.indexOf("\" state");
-        return line.substring(nameStart, nameEnd);
-    }
-
-    public static int getProcessingNumber(String line){
-        int processingOrderStart = line.indexOf("processingorder=\"") + "processingorder=\"".length();
-        int processingOrderEnd = line.indexOf("\" policy");
-        return Integer.parseInt(line.substring(processingOrderStart, processingOrderEnd));
-    }
-
-    public static String getState(String line){
-        int nameStart = line.indexOf("state=\"") + "state=\"".length();
-        int nameEnd = line.indexOf("\" processingorder");
-        return line.substring(nameStart, nameEnd);
-    }
-
-    public static int getPolicy(String line){
-        int nameStart = line.indexOf("policysource=\"") + "policysource=\"".length();
-        int nameEnd = line.indexOf("\" conditionid");
-        return Integer.parseInt(line.substring(nameStart, nameEnd));
-    }
-
-    public static String getConditionId(String line){
-        int nameStart = line.indexOf("conditionid=\"") + "conditionid=\"".length();
-        int nameEnd = line.indexOf("\" conditiondata");
-        return line.substring(nameStart, nameEnd);
-    }
-
-    public static String getConditionData(String line){
-        int nameStart = line.indexOf("conditiondata=\"") + "conditiondata=\"".length();
-        int nameEnd = line.indexOf("\" profileid");
-        return line.substring(nameStart, nameEnd);
-    }
-
-    public static String getProfileId(String line){
-        int nameStart = line.indexOf("profileid=\"") + "profileid=\"".length();
-        int nameEnd = line.indexOf("\" profiledata");
-        return line.substring(nameStart, nameEnd);
-    }
-
-    public static String getProfileData(String line){
-        int nameStart = line.indexOf("profiledata=\"") + "profiledata=\"".length();
-        int nameEnd = line.length()-1;
-        return line.substring(nameStart, nameEnd).replace("\"" , "");
-    }
-
 }

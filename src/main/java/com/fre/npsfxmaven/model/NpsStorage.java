@@ -20,24 +20,19 @@ public class NpsStorage implements IStorage{
     newNps.validate();
         for (Storable nps : npsStorage) {
             if (nps.getName().equals(newNps.getName())) {
-                //System.out.println("Network with name " + newNps.getName() + " already exists.");
                 return nameAlreadyExist;
             } else if(newNps.getName().equals(null) || newNps.getName().equals("")) {
-                //System.out.println("network name can't be empty");
                 return nameIsEmpty;
             }
             else if (nps.getProcessingOrder() >= newNps.getProcessingOrder()) {
-                System.out.println("nps name: " + newNps.getName());
-                System.out.println(">=");
                 nps.bumpProcessingOrder();
             }
         }
-        System.out.println("add?");
         npsStorage.add(newNps);
         return npsAdded;
     }
 
-    public void switchNps(String orderOne, String orderTwo){
+    public void switchNpsPriority(String orderOne, String orderTwo){
         List<Storable> listNpsStorage = npsStorage.stream().toList();
 
         int index1 = Integer.parseInt(orderOne) - 1;

@@ -1,8 +1,5 @@
-package com.fre.npsfxmaven;
+package com.fre.npsfxmaven.model;
 
-import com.fre.npsfxmaven.model.Nps;
-import com.fre.npsfxmaven.model.NpsStorage;
-import com.fre.npsfxmaven.model.Storable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +30,7 @@ class NpsStorageTest {
         Storable nps2 = new Nps("name2", 2);
         storage.addNps(nps);
         storage.addNps(nps2);
-        storage.switchNps(String.valueOf(nps.getProcessingOrder()), String.valueOf(nps2.getProcessingOrder()));
+        storage.switchNpsPriority(String.valueOf(nps.getProcessingOrder()), String.valueOf(nps2.getProcessingOrder()));
         assertEquals(2, nps.getProcessingOrder());
         assertEquals(1, nps2.getProcessingOrder());
     }

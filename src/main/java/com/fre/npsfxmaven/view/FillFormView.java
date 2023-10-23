@@ -3,6 +3,7 @@ package com.fre.npsfxmaven.view;
 import com.fre.npsfxmaven.util.GridBuilder;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -16,12 +17,12 @@ public class FillFormView {
     Button btn;
     TextField nameTextField;
     TextField processingOrderTextField;
-    TextField stateTextField;
+    ComboBox<String> stateComboBox;
     TextField policyTextField;
     TextField conditionTextField;
     TextField conditionDataTextField;
     TextField profileIdTextField;
-    TextField profileDataTextField;
+    ComboBox<String> profileDataComboBox;
     GridPane grid;
 
     public FillFormView() {
@@ -34,6 +35,8 @@ public class FillFormView {
         stage.setScene(scene);
         stage.setWidth(400);
         stage.setHeight(500);
+
+        // fill grid with labels, textfields and comboboxes
         Label npName = new Label("NP name");
         grid.add(npName, 0, 1);
         nameTextField = new TextField();
@@ -46,8 +49,10 @@ public class FillFormView {
 
         Label stateLabel = new Label("State");
         grid.add(stateLabel, 0, 3);
-        stateTextField = new TextField("enable");
-        grid.add(stateTextField, 1, 3);
+        stateComboBox = new ComboBox<>();
+        stateComboBox.getItems().addAll("enable", "disable");
+        stateComboBox.getSelectionModel().selectFirst();
+        grid.add(stateComboBox, 1, 3);
 
         Label policyLabel = new Label("Policy source");
         grid.add(policyLabel, 0, 4);
@@ -71,14 +76,10 @@ public class FillFormView {
 
         Label profileDataLabel = new Label("Profile data");
         grid.add(profileDataLabel, 0, 8);
-        profileDataTextField = new TextField("TRUE");
-        grid.add(profileDataTextField, 1, 8);
-
-        /*
-        infoLabel = new Label("");
-        grid.add(infoLabel,0, 11);
-
-         */
+        profileDataComboBox = new ComboBox<>();
+        profileDataComboBox.getItems().addAll("TRUE", "FALSE");
+        profileDataComboBox.getSelectionModel().selectFirst();
+        grid.add(profileDataComboBox, 1, 8);
 
         btn = new Button("Add new NPS");
 
@@ -94,8 +95,8 @@ public class FillFormView {
         return processingOrderTextField;
     }
 
-    public TextField getStateTextField() {
-        return stateTextField;
+    public ComboBox<String> getStateComboBox() {
+        return stateComboBox;
     }
 
     public TextField getPolicyTextField() {
@@ -114,8 +115,8 @@ public class FillFormView {
         return profileIdTextField;
     }
 
-    public TextField getProfileDataTextField() {
-        return profileDataTextField;
+    public ComboBox<String> getProfileDataComboBox() {
+        return profileDataComboBox;
     }
 
     public Button getBtn() {
